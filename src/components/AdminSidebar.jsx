@@ -12,7 +12,7 @@ const AdminSidebar = ({ setCurrentScreen }) => {
   const menuItems = [
     { name: "Dashboard", screen: "dashboard", icon: <LuLayoutDashboard /> },
     { name: "Reports", screen: "reports", icon: <TbReportSearch /> },
-    { name: "User Data", screen: "userData", icon: <LuUsers2 /> },
+    { name: "User List", screen: "userData", icon: <LuUsers2 /> },
     { name: "Geo Mapping", screen: "geoMapping", icon: <LuMapPin /> },
     {
       name: "Publish Articles",
