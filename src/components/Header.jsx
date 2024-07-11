@@ -1,5 +1,5 @@
 // src/components/Header.jsx
-
+import { LuUser2 } from "react-icons/lu";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -16,17 +16,18 @@ const Header = ({ setCurrentScreen }) => {
 
   return (
     <header className="flex items-center justify-between p-4 bg-white shadow-md">
-      <div className="text-2xl font-bold text-blue-600">FishLens</div>
+      <h1 className="w-full text-3xl ml-5 font-bold text-[#424242]">
+        <a href="/adminDashboard">
+          <span style={{ color: "#00003C" }}>Fish</span>
+          <span style={{ color: "#ADD1E9" }}>Lens</span>
+        </a>
+      </h1>{" "}
       <div className="relative">
         <button
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
           className="flex items-center focus:outline-none"
         >
-          <img
-            src="/path/to/profile/icon" // Replace with actual path to profile icon
-            alt="Profile"
-            className="w-8 h-8 rounded-full"
-          />
+          <LuUser2 />
         </button>
         {isDropdownOpen && (
           <div className="absolute right-0 mt-2 w-48 bg-white border rounded shadow-lg">

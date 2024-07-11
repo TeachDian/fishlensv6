@@ -36,7 +36,7 @@ const AdminDashboard = () => {
   return (
     <div id="adminDashboard" className="flex flex-col min-h-screen bg-gray-100">
       <Header setCurrentScreen={setCurrentScreen} /> {/* Add the Header */}
-      <div className="flex flex-1">
+      <div className="flex flex-1 ">
         <AdminSidebar setCurrentScreen={setCurrentScreen} />
         <div className="flex-1 p-6">
           {renderCurrentScreen()}

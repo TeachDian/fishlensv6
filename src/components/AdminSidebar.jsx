@@ -1,37 +1,46 @@
 import React from "react";
-import { FaTachometerAlt, FaFileAlt, FaUserAlt, FaMapMarkedAlt, FaNewspaper, FaGlobe } from "react-icons/fa";
+import {
+  LuLayoutDashboard,
+  LuUsers2,
+  LuMapPin,
+  LuMap,
+  LuNewspaper,
+} from "react-icons/lu";
+import { TbReportSearch } from "react-icons/tb";
 
 const AdminSidebar = ({ setCurrentScreen }) => {
   const menuItems = [
-    { name: "Dashboard", screen: "dashboard", icon: <FaTachometerAlt /> },
-    { name: "Reports", screen: "reports", icon: <FaFileAlt /> },
-    { name: "User Data", screen: "userData", icon: <FaUserAlt /> },
-    { name: "Geo Mapping", screen: "geoMapping", icon: <FaMapMarkedAlt /> },
-    { name: "Publish Articles", screen: "publishArticles", icon: <FaNewspaper /> },
-    { name: "Regions", screen: "regions", icon: <FaGlobe /> },
-  
+    { name: "Dashboard", screen: "dashboard", icon: <LuLayoutDashboard /> },
+    { name: "Reports", screen: "reports", icon: <TbReportSearch /> },
+    { name: "User Data", screen: "userData", icon: <LuUsers2 /> },
+    { name: "Geo Mapping", screen: "geoMapping", icon: <LuMapPin /> },
+    {
+      name: "Publish Articles",
+      screen: "publishArticles",
+      icon: <LuNewspaper />,
+    },
+    { name: "Regions", screen: "regions", icon: <LuMap /> },
   ];
 
   return (
-    <aside className="bg-gray-800 text-white w-64 min-h-screen flex flex-col">
-      <div className="p-6">
-        <h1 className="text-3xl font-bold text-center">Admin Panel</h1>
+    <aside className="bg-white text-[#00003C] w-64 min-h-screen flex flex-col">
+      <div className="pt-4">
+        <nav className="flex-1">
+          <ul className="w-[256px]">
+            {menuItems.map((item) => (
+              <li key={item.screen} className="m-4">
+                <button
+                  onClick={() => setCurrentScreen(item.screen)}
+                  className="flex items-center w-full p-4 text-lg rounded hover:bg-[#F6F9FF] focus:outline-none"
+                >
+                  {item.icon}
+                  <span className="ml-4">{item.name}</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
-      <nav className="flex-1">
-        <ul className="w-[256px]">
-          {menuItems.map((item) => (
-            <li key={item.screen} className="m-4">
-              <button
-                onClick={() => setCurrentScreen(item.screen)}
-                className="flex items-center w-full p-4 text-lg rounded hover:bg-gray-700 focus:outline-none"
-              >
-                {item.icon}
-                <span className="ml-4">{item.name}</span>
-              </button>
-            </li>
-          ))}
-        </ul>
-      </nav>
     </aside>
   );
 };
