@@ -1,6 +1,5 @@
 import React from "react";
 
-
 const Hero = () => {
   return (
     <section id="home">
@@ -22,7 +21,7 @@ const Hero = () => {
             platforms.
           </p>
           <button className="bg-[#00003C] w-[200px] rounded-md font-medium my-6 mx-auto py-3 text-white">
-            Get Started
+            <a href="#about">Get Started</a>
           </button>
         </div>
       </div>

@@ -22,9 +22,13 @@ const Download = () => {
               reprehenderit dolore autem cum ullam sed odit perspiciatis.
               Doloribus quos velit, eveniet ex deserunt fuga?
             </p>
-            <button className="bg-black text-[#ffffff] w-[200px] rounded-md font-medium my-6 mx-auto md:mx-0 py-3">
+            <a 
+              href="/files/mihon-v0.16.5.apk" // Update this to the correct path of your file
+              download="FishLens.apk" // This specifies the name of the file to download
+              className="bg-[#00003C] text-[#ffffff] w-[200px] rounded-md font-medium my-6 mx-auto md:mx-0 py-3 text-center"
+            >
               Download
-            </button>
+            </a>
           </div>
         </div>
       </div>

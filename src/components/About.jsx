@@ -68,7 +68,7 @@ const About = () => {
               develop innovative solutions that address the challenges faced by
               fish farmers and industry stakeholders.
             </p>
-            <button className="bg-black text-[#ffffff] w-[200px] rounded-md font-medium my-6 mx-auto md:mx-0 py-3">
+            <button className="bg-[#00003C] text-[#ffffff] w-[200px] rounded-md font-medium my-6 mx-auto md:mx-0 py-3">
               Get Started
             </button>
           </div>

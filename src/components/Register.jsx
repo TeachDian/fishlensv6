@@ -1,5 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
 
 const religions = [
   { value: "", label: "Choose religion" },
@@ -279,6 +285,8 @@ const data = {
 
 const Register = () => {
   const [formData, setFormData] = useState({
+    //
+
     // personal data
     region: "",
     province: "",
@@ -327,13 +335,14 @@ const Register = () => {
     numberofEmployedfammem: "",
     numberofUnemployedfammem: "",
   });
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    const { name, value, type, files } = e.target;
+    const { name, value, type, checked } = e.target;
     setFormData({
       ...formData,
-      [name]: type === "file" ? files[0] : value,
+      [name]: type === "checkbox" ? checked : value,
     });
   };
 
@@ -358,7 +367,7 @@ const Register = () => {
     e.preventDefault();
     // Handle form submission, then redirect to the admin dashboard
     console.log(formData);
-    navigate("/admin");
+    navigate("/login");
   };
 
   const regions = Object.keys(data.regions);
@@ -385,12 +394,13 @@ const Register = () => {
         <form onSubmit={handleSubmit}>
           {/* Region, Province, City/Town */}
           <div className="mb-4">
-            <label className="block text-gray-700">Region</label>
+            <label className="block text-gray-700">Region *</label>
             <select
               name="region"
               value={formData.region}
               className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md"
               onChange={handleRegionChange}
+              required
             >
               <option value="">Select Region</option>
               {regions.map((region) => (
@@ -401,13 +411,14 @@ const Register = () => {
             </select>
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700">Province</label>
+            <label className="block text-gray-700">Province *</label>
             <select
               name="province"
               value={formData.province}
               className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md"
               onChange={handleProvinceChange}
               disabled={!formData.region}
+              required
             >
               <option value="">Select Province</option>
               {provinces.map((province) => (
@@ -418,13 +429,14 @@ const Register = () => {
             </select>
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700">City/Town</label>
+            <label className="block text-gray-700">City/Town *</label>
             <select
               name="cityTown"
               value={formData.cityTown}
               className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md"
               onChange={handleChange}
               disabled={!formData.province}
+              required
             >
               <option value="">Select City/Town</option>
               {citiesTowns.map((cityTown) => (
@@ -435,57 +447,62 @@ const Register = () => {
             </select>
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700">Address</label>
+            <label className="block text-gray-700">Address *</label>
             <input
               type="text"
               name="address"
               className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md"
               placeholder="Enter Address"
               onChange={handleChange}
+              required
             />
           </div>
 
           {/* Authentications username and password */}
           <div className="mb-4">
-            <label className="block text-gray-700">Username</label>
+            <label className="block text-gray-700">Username *</label>
             <input
               type="text"
               name="username"
               className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md"
               placeholder="Enter Username"
               onChange={handleChange}
+              required
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700">Password</label>
+            <label className="block text-gray-700">Password *</label>
             <input
               type="password"
               name="password"
               className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md"
               placeholder="Enter Password"
               onChange={handleChange}
+              required
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700">Repeat Password</label>
+            <label className="block text-gray-700">Repeat Password *</label>
             <input
               type="password"
               name="password"
               className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md"
               placeholder="Enter Password"
               onChange={handleChange}
+              required
             />
           </div>
 
           {/* First Name, Middle Name, Last Name */}
           <div className="mb-4">
-            <label className="block text-gray-700">First Name</label>
+            <label className="block text-gray-700">First Name *</label>
             <input
               type="text"
               name="firstName"
               className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md"
               placeholder="Enter First Name"
               onChange={handleChange}
+              required
             />
           </div>
           <div className="mb-4">
@@ -499,13 +516,14 @@ const Register = () => {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700">Last Name</label>
+            <label className="block text-gray-700">Last Name *</label>
             <input
               type="text"
               name="lastName"
               className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md"
               placeholder="Enter Last Name"
               onChange={handleChange}
+              required
             />
           </div>
 
@@ -521,13 +539,14 @@ const Register = () => {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700">Mobile Number</label>
+            <label className="block text-gray-700">Mobile Number *</label>
             <input
               type="tel"
               name="mobileNumber"
               className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md"
               placeholder="Ex. +639412345678"
               onChange={handleChange}
+              required
             />
           </div>
 
@@ -543,32 +562,35 @@ const Register = () => {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700">Birthdate</label>
+            <label className="block text-gray-700">Birthdate *</label>
             <input
               type="date"
               name="birthdate"
               className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md"
               onChange={handleChange}
+              required
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700">Place of Birth</label>
+            <label className="block text-gray-700">Place of Birth *</label>
             <input
               type="text"
               name="placeOfBirth"
               className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md"
               placeholder="Enter Place of Birth"
               onChange={handleChange}
+              required
             />
           </div>
 
           {/* Sex, Civil Status */}
           <div className="mb-4">
-            <label className="block text-gray-700">Sex</label>
+            <label className="block text-gray-700">Sex *</label>
             <select
               name="sex"
               className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md"
               onChange={handleChange}
+              required
             >
               <option value="">Choose option</option>
               <option value="male">Male</option>
@@ -576,11 +598,12 @@ const Register = () => {
             </select>
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700">Civil Status</label>
+            <label className="block text-gray-700">Civil Status *</label>
             <select
               name="civilStatus"
               className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md"
               onChange={handleChange}
+              required
             >
               <option value="">Choose option</option>
               <option value="married">Married</option>
@@ -592,11 +615,12 @@ const Register = () => {
 
           {/* Blood Type, Religion */}
           <div className="mb-4">
-            <label className="block text-gray-700">Blood Type</label>
+            <label className="block text-gray-700">Blood Type *</label>
             <select
               name="bloodType"
               className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md"
               onChange={handleChange}
+              required
             >
               <option value="">Choose option</option>
               <option value="A+">A Positive (A+)</option>
@@ -610,11 +634,12 @@ const Register = () => {
             </select>
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700">Religion</label>
+            <label className="block text-gray-700">Religion *</label>
             <select
               name="religion"
               className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md"
               onChange={handleChange}
+              required
             >
               {religions.map((religion) => (
                 <option key={religion.value} value={religion.value}>
@@ -624,13 +649,14 @@ const Register = () => {
             </select>
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700">Nationality</label>
+            <label className="block text-gray-700">Nationality *</label>
             <input
               type="text"
               name="nationality"
               className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md"
               placeholder="Enter Your Nationality"
               onChange={handleChange}
+              required
             />
           </div>
 
@@ -656,23 +682,27 @@ const Register = () => {
 
           {/* Emergency Contact */}
           <div className="mb-4">
-            <label className="block text-gray-700">In Case Of Emergency</label>
+            <label className="block text-gray-700">
+              In Case Of Emergency *
+            </label>
             <input
               type="text"
               name="emergencyContact"
               className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md"
               placeholder="Enter Emergency Contact Name"
               onChange={handleChange}
+              required
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700">Contact</label>
+            <label className="block text-gray-700">Contact *</label>
             <input
               type="text"
               name="emergencyContactNumber"
               className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md"
               placeholder="Enter Emergency Contact Number"
               onChange={handleChange}
+              required
             />
           </div>
           <div className="mb-4">
@@ -698,28 +728,32 @@ const Register = () => {
 
           {/* Lively Hood */}
           <div className="mb-4">
-            <label className="block text-gray-700">Main Source Of Income</label>
+            <label className="block text-gray-700">
+              Main Source Of Income *
+            </label>
             <input
               type="text"
               name="mainSourceofIncome"
               className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md"
               placeholder="Please Specify Your Main Source Of Income"
               onChange={handleChange}
+              required
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700">Amount</label>
+            <label className="block text-gray-700">Amount *</label>
             <input
               type="text"
               name="mainSourceofIncomeAmount"
               className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md"
               placeholder="Please Specify The Amount"
               onChange={handleChange}
+              required
             />
           </div>
           <div className="mb-4">
             <label className="block text-gray-700">
-              Other Source Of Income
+              Other Source Of Income *
             </label>
             <input
               type="text"
@@ -727,16 +761,18 @@ const Register = () => {
               className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md"
               placeholder="Please Specify Your Other Source Of Income"
               onChange={handleChange}
+              required
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700">Amount</label>
+            <label className="block text-gray-700">Amount *</label>
             <input
               type="text"
               name="otherSourceofIncomeAmount"
               className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md"
               placeholder="Please Specify The Amount"
               onChange={handleChange}
+              required
             />
           </div>
 
@@ -858,10 +894,11 @@ const Register = () => {
                 name="agree"
                 className="mr-2"
                 onChange={handleChange}
+                required
               />
               <span className="text-gray-700">
                 I Agree to the{" "}
-                <a href="#" className="text-[#ADD1E9]">
+                <a href="/termsncondition" className="text-[#ADD1E9]">
                   Terms & Conditions
                 </a>
               </span>

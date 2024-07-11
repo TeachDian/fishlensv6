@@ -8,6 +8,11 @@ import Blog from './components/Blog';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Register from './components/Register';
+import TermsNCondition from './components/TermsNCondition';
+
+
+import Login from './components/Login';
+import AdminDashboard from './components/AdminDashboard';
 
 function App() {
   return (
@@ -19,28 +24,25 @@ function App() {
 
 function AppContent() {
   const location = useLocation();
-  const hideHeaderPaths = ['/register'];
+  const hideHeaderPaths = ['/register', '/login', '/termsncondition', '/adminDashboard'];
 
   return (
     <div className="App">
-      {/* Render Navbar, Hero, About, Download, Blog, Contact, Footer only if not on the registration page */}
-      {!hideHeaderPaths.includes(location.pathname) ? (
+      {!hideHeaderPaths.includes(location.pathname) && (
         <>
           <Navbar />
-          <Hero />
-          <About />
-          <Download />
-          <Blog />
-          <Contact />
-          <Footer />
         </>
-      ) : (
-        <Routes>
-          <Route path="/register" element={<Register />} />
-        </Routes>
       )}
+      <Routes>
+        <Route path="/" element={<><Hero /><About /><Download /><Blog /><Contact /><Footer /></>} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/termsncondition" element={<TermsNCondition />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/adminDashboard" element={<AdminDashboard />} />
+      </Routes>
     </div>
   );
 }
+
 
 export default App;

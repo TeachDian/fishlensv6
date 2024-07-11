@@ -1,10 +1,10 @@
 import React from "react";
 import {
-  FaDribbbleSquare,
   FaFacebookSquare,
   FaGithubSquare,
   FaInstagram,
   FaTwitterSquare,
+  FaLinkedin,
 } from "react-icons/fa";
 
 const Footer = () => {
@@ -22,11 +22,16 @@ const Footer = () => {
           Vision Technology.{" "}
         </p>
         <div className="flex justify-between md:w-[75%] my-6">
-          <FaFacebookSquare size={30} />
-          <FaInstagram size={30} />
-          <FaTwitterSquare size={30} />
-          <FaGithubSquare size={30} />
-          <FaDribbbleSquare size={30} />
+          <a href="https://web.facebook.com/philip.sabinet0924" target="_blank"><FaFacebookSquare size={30} /></a>
+          <a href="https://web.facebook.com/philip.sabinet0924" target="_blank"><FaInstagram size={30} /></a>
+          <a href="https://web.facebook.com/philip.sabinet0924" target="_blank"><FaTwitterSquare size={30} /></a>
+          <a href="https://github.com/TeachDian/fishlensv6" target="_blank"><FaGithubSquare size={30} /></a>
+          <a href="https://web.facebook.com/philip.sabinet0924" target="_blank"><FaLinkedin size={30}/> </a>
+          
+          
+          
+          
+          
         </div>
       </div>
       <div className="lg:col-span-2 flex justify-between mt-6">
