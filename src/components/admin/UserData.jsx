@@ -2,51 +2,9 @@ import React, { useMemo, useState, useEffect } from "react";
 import { useTable, useFilters, useSortBy, useGlobalFilter } from "react-table";
 import Modal from "react-modal";
 import { v4 as uuidv4 } from "uuid";
+import { data, initializeData } from "./data"; // Import data and initialization function
 
-// Sample data (replace with actual data as needed)
-const data = [
-  {
-    userIdNumber: uuidv4(),
-    region: "Region 1",
-    province: "Province 1",
-    cityTown: "City 1",
-    address: "Address 1",
-    username: "user1",
-    firstName: "John",
-    middleName: "Doe",
-    lastName: "Smith",
-    telephone: "1234567890",
-    mobileNumber: "0987654321",
-    email: "john@example.com",
-    birthdate: "1990-01-01",
-    placeOfBirth: "Place 1",
-    sex: "Male",
-    civilStatus: "Single",
-    bloodType: "A",
-    religion: "Religion 1",
-    nationality: "Nationality 1",
-    highestEducationalAttainment: "Bachelor's Degree",
-    emergencyContact: "Jane Doe",
-    emergencyContactNumber: "1234567890",
-    emergrncyRelationship: "Sister",
-    emergrncyAddress: "Address 2",
-    mainSourceofIncome: "Job 1",
-    mainSourceofIncomeAmount: 50000,
-    otherSourceofIncome: "Job 2",
-    otherSourceofIncomeAmount: 20000,
-    nameofOrganization: "Org 1",
-    memberSince: "2020-01-01",
-    positioninOrganization: "Member",
-    nameofSpouse: "Spouse 1",
-    numberofchildren: 2,
-    spouseContactnum: "1234567890",
-    numberofchildreninSchool: 1,
-    numberofchildrenoutSchool: 1,
-    numberofEmployedfammem: 2,
-    numberofUnemployedfammem: 1,
-  },
-  // Add more data as needed
-];
+
 
 // Set the app element for accessibility
 Modal.setAppElement("#root");
@@ -56,12 +14,7 @@ const UserData = () => {
   const [expandedRow, setExpandedRow] = useState(null);
 
   useEffect(() => {
-    // Generate unique IDs for existing data without a userIdNumber
-    data.forEach((item) => {
-      if (!item.userIdNumber) {
-        item.userIdNumber = uuidv4();
-      }
-    });
+    initializeData(data); // Initialize data if needed
   }, []);
 
   const handleFilterChange = (e) => {
@@ -69,6 +22,31 @@ const UserData = () => {
     setGlobalFilter(value);
     setFilterInput(value);
   };
+
+
+// // Set the app element for accessibility
+// Modal.setAppElement("#root");
+
+// const UserData = () => {
+//   const [filterInput, setFilterInput] = useState("");
+//   const [expandedRow, setExpandedRow] = useState(null);
+
+//   useEffect(() => {
+//     // Generate unique IDs for existing data without a userIdNumber
+//     data.forEach((item) => {
+//       if (!item.userIdNumber) {
+//         item.userIdNumber = uuidv4();
+//       }
+//     });
+//   }, []);
+
+//   const handleFilterChange = (e) => {
+//     const value = e.target.value || undefined;
+//     setGlobalFilter(value);
+//     setFilterInput(value);
+//   };
+
+
 
   const handleExpandRow = (row) => {
     setExpandedRow(expandedRow === row ? null : row);
@@ -86,11 +64,13 @@ const UserData = () => {
 
   const mainColumns = useMemo(
     () => [
+      { Header: "Region", accessor: "region" },
+      { Header: "Province", accessor: "province" },
+      { Header: "User ID", accessor: "userIdNumber" },
       { Header: "Username", accessor: "username" },
       { Header: "First Name", accessor: "firstName" },
       { Header: "Last Name", accessor: "lastName" },
       { Header: "Email", accessor: "email" },
-      { Header: "User ID", accessor: "userIdNumber" },
       {
         Header: "Actions",
         accessor: "actions",
@@ -111,8 +91,6 @@ const UserData = () => {
 
   const detailedColumns = useMemo(
     () => [
-      { Header: "Region", accessor: "region" },
-      { Header: "Province", accessor: "province" },
       { Header: "City/Town", accessor: "cityTown" },
       { Header: "Address", accessor: "address" },
       { Header: "Telephone", accessor: "telephone" },
@@ -273,5 +251,6 @@ const UserData = () => {
     </div>
   );
 };
+
 
 export default UserData;
