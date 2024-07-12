@@ -32,12 +32,14 @@ const Login = () => {
             >
               Log in
             </button>
-            <a
-              href="/adminDashboard"
-              className="text-[#00003C] mt-4 w-full px-4 py-2 pt-4 mb-4"
-            >
-              Not registered yet? Create an account
-            </a>
+            <div>
+              <a
+                href="/adminDashboard"
+                className="text-[#00003C] mt-4 w-full px-4 py-2 pt-4 mb-4"
+              >
+                Forgot Password?
+              </a>
+            </div>
           </form>
         </div>
       </div>

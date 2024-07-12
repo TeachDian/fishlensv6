@@ -34,13 +34,14 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div id="adminDashboard" className="flex flex-col min-h-screen bg-[#F6F9FF]">
+    <div id="adminDashboard" className="min-h-screen bg-[#F6F9FF]">
       <Header setCurrentScreen={setCurrentScreen} /> {/* Add the Header */}
-      <div className="flex flex-1 ">
-        <AdminSidebar setCurrentScreen={setCurrentScreen} />
-        <div className="flex-1 p-6">
-          {renderCurrentScreen()}
-        </div>
+      <div className="flex flex-1">
+        <AdminSidebar
+          currentScreen={currentScreen}
+          setCurrentScreen={setCurrentScreen}
+        />
+        <div className="flex-1 p-6">{renderCurrentScreen()}</div>
       </div>
     </div>
   );
