@@ -87,7 +87,7 @@ const Contact = () => {
                 <input type="checkbox" className="mr-2" />
                 <span className="text-gray-700">
                   You agree to our friendly{" "}
-                  <a href="#" className="text-[#ADD1E9]">
+                  <a href="/" className="text-[#ADD1E9]">
                     privacy policy
                   </a>
                   .
