@@ -292,7 +292,6 @@ const Register = () => {
     province: "",
     cityTown: "",
     address: "",
-    username: "",
     password: "",
     firstName: "",
     middleName: "",
@@ -458,18 +457,7 @@ const Register = () => {
             />
           </div>
 
-          {/* Authentications username and password */}
-          <div className="mb-4">
-            <label className="block text-gray-700">Username *</label>
-            <input
-              type="text"
-              name="username"
-              className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md"
-              placeholder="Enter Username"
-              onChange={handleChange}
-              required
-            />
-          </div>
+          {/* Authentications and password */}
           <div className="mb-4">
             <label className="block text-gray-700">Password *</label>
             <input

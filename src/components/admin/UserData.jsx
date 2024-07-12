@@ -50,7 +50,6 @@ const UserData = () => {
       { Header: "Province", accessor: "province" },
       { Header: "City/Town", accessor: "cityTown" },
       { Header: "User ID", accessor: "userIdNumber" },
-      { Header: "Username", accessor: "username" },
       { Header: "First Name", accessor: "firstName" },
       { Header: "Last Name", accessor: "lastName" },
       { Header: "Email", accessor: "email" },
