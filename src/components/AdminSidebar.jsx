@@ -8,6 +8,7 @@ import {
 } from "react-icons/lu";
 import { TbReportSearch } from "react-icons/tb";
 
+
 const AdminSidebar = ({ currentScreen, setCurrentScreen }) => {
   const menuItems = [
     { name: "Dashboard", screen: "dashboard", icon: <LuLayoutDashboard /> },
@@ -28,7 +29,7 @@ const AdminSidebar = ({ currentScreen, setCurrentScreen }) => {
         <nav className="flex-1">
           <ul className="w-[256px]">
             {menuItems.map((item) => (
-              <li key={item.screen} className="m-4">
+              <li key={item.screen} className="m-1">
                 <button
                   onClick={() => setCurrentScreen(item.screen)}
                   className={`flex items-center w-full p-4 text-lg rounded hover:bg-[#F6F9FF] focus:outline-none ${

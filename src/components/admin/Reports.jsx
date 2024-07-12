@@ -41,7 +41,7 @@ const Reports = () => {
       { Header: "Date", accessor: "reportDate" },
       { Header: "Report ID", accessor: "reportIdNumber" },
       { Header: "User ID", accessor: "userIdNumber" },
-      { Header: "First Name", accessor: "firstName" },
+      { Header: "Name", accessor: "firstName" },
       { Header: "Coordinates", accessor: "coordinates" },
       {
         Header: "Actions",
@@ -52,7 +52,7 @@ const Reports = () => {
               className="text-blue-500 hover:text-blue-700"
               onClick={() => handleExpandRow(row.original)}
             >
-              {expandedRow === row.original ? "Show Less" : "Show More"}
+              {expandedRow === row.original ? "View Less" : "View More"}
             </button>
           </div>
         ),
