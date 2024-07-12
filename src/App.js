@@ -27,19 +27,21 @@ function AppContent() {
   const hideHeaderPaths = ['/register', '/login', '/termsncondition', '/adminDashboard'];
 
   return (
-    <div className="App">
+    <div className="App overflow-x-hidden">
       {!hideHeaderPaths.includes(location.pathname) && (
         <>
           <Navbar />
         </>
       )}
-      <Routes>
-        <Route path="/" element={<><Hero /><About /><Download /><Blog /><Contact /><Footer /></>} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/termsncondition" element={<TermsNCondition />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/adminDashboard" element={<AdminDashboard />} />
-      </Routes>
+      <div>
+        <Routes>
+          <Route path="/" element={<><Hero /><About /><Download /><Blog /><Contact /><Footer /></>} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/termsncondition" element={<TermsNCondition />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/adminDashboard" element={<AdminDashboard />} />
+        </Routes>
+      </div>
     </div>
   );
 }

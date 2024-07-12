@@ -29,14 +29,10 @@ const Dashboard = () => {
 
       {/* Line Graph */}
       <div className="mt-8">
-        {/* Your line graph component here */}
-        {/* Example: <LineGraph data={yourData} /> */}
       </div>
 
       {/* Calendar */}
       <div className="mt-8">
-        {/* Your calendar component here */}
-        {/* Example: <Calendar month="July" year={2022} highlightedDates={[12]} /> */}
       </div>
     </div>
   );
