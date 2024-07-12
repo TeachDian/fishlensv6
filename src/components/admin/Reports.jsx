@@ -1,7 +1,6 @@
 import React, { useMemo, useState, useEffect } from "react";
 import { useTable, useFilters, useSortBy, useGlobalFilter } from "react-table";
 import Modal from "react-modal";
-import { v4 as uuidv4 } from "uuid";
 import { data, initializeData } from "./data"; // Import data and initialization function
 import GeoMapping from "./GeoMapping"; // Import GeoMapping component
 
@@ -38,13 +37,12 @@ const Reports = () => {
 
   const mainColumns = useMemo(
     () => [
+      { Header: "Status", accessor: "reportStatus" },
+      { Header: "Date", accessor: "reportDate" },
       { Header: "Report ID", accessor: "reportIdNumber" },
-      { Header: "Coordinates", accessor: "coordinates" },
-      { Header: "Region", accessor: "region" },
-      { Header: "Province", accessor: "province" },
-      { Header: "City/Town", accessor: "cityTown" },
       { Header: "User ID", accessor: "userIdNumber" },
-      { Header: "Username", accessor: "username" },
+      { Header: "First Name", accessor: "firstName" },
+      { Header: "Coordinates", accessor: "coordinates" },
       {
         Header: "Actions",
         accessor: "actions",

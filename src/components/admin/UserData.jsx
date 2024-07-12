@@ -1,7 +1,6 @@
 import React, { useMemo, useState, useEffect } from "react";
 import { useTable, useFilters, useSortBy, useGlobalFilter } from "react-table";
 import Modal from "react-modal";
-import { v4 as uuidv4 } from "uuid";
 import { data, initializeData } from "./data"; // Import data and initialization function
 
 // Set the app element for accessibility

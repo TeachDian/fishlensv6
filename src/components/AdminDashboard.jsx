@@ -34,7 +34,7 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div id="adminDashboard" className="min-h-screen bg-[#F6F9FF]">
+    <div id="adminDashboard" className="min-h-screen  overflow-x-scroll bg-[#F6F9FF]">
       <Header setCurrentScreen={setCurrentScreen} /> {/* Add the Header */}
       <div className="flex flex-1">
         <AdminSidebar
