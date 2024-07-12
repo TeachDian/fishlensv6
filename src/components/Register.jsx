@@ -7,6 +7,8 @@ import RegisterRegions from "./registerRegions"; // Updated component for region
 import RegisterReligions from "./registerReligions"; // Updated component for religions selection
 import { registerRegionsData } from "./registerRegionsData";
 
+import Swal from "sweetalert2";
+
 const data = {
   regions: registerRegionsData,
 };
@@ -61,14 +63,21 @@ const Register = () => {
         email: user.email,
       });
 
-      setMessage("User registered successfully");
+      Swal.fire({
+        title: "Success!",
+        text: "Logged in successfully!",
+        icon: "success",
+      });
       setTimeout(() => {
         setMessage("");
         navigate("/login");
       }, 2000);
     } catch (error) {
-      setError(error.message);
-      setTimeout(() => setError(""), 2000);
+      Swal.fire({
+        title: "Error!",
+        text: error.message,
+        icon: "error",
+      });
     }
   };
 
@@ -111,6 +120,7 @@ const Register = () => {
             <input
               className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md"
               type="email"
+              placeholder="Enter Your Valid Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -121,6 +131,7 @@ const Register = () => {
             <input
               className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md"
               type="password"
+              placeholder="Enter A Strong Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -131,6 +142,7 @@ const Register = () => {
             <input
               className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md"
               type="password"
+              placeholder="Repeate Password"
               value={retypePassword}
               onChange={(e) => setRetypePassword(e.target.value)}
               required
@@ -141,6 +153,7 @@ const Register = () => {
             <input
               className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md"
               type="text"
+              placeholder="Enter Your First Name"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
               required
@@ -151,6 +164,7 @@ const Register = () => {
             <input
               className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md"
               type="text"
+              placeholder="Enter Your Middle Name"
               value={middleName}
               onChange={(e) => setMiddleName(e.target.value)}
               required
@@ -161,6 +175,7 @@ const Register = () => {
             <input
               className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md"
               type="text"
+              placeholder="Enter Your Last Name"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
               required
@@ -181,6 +196,7 @@ const Register = () => {
             <input
               className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md"
               type="text"
+              placeholder="Enter Your Current Address"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
               required
@@ -191,6 +207,7 @@ const Register = () => {
             <input
               className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md"
               type="tel"
+              placeholder="Enter A Valid Phone Number"
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
               required

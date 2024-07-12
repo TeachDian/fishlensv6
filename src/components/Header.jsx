@@ -2,6 +2,8 @@
 import { LuUser2 } from "react-icons/lu";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { auth } from "./firebase"; // Ensure the path is correct
 
 const Header = ({ setCurrentScreen }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -10,7 +12,13 @@ const Header = ({ setCurrentScreen }) => {
   const handleLogout = () => {
     const confirmLogout = window.confirm("Are you sure you want to log out?");
     if (confirmLogout) {
-      navigate("/login");
+      signOut(auth)
+        .then(() => {
+          navigate("/login");
+        })
+        .catch((error) => {
+          console.error("Error signing out: ", error);
+        });
     }
   };
 
@@ -21,7 +29,7 @@ const Header = ({ setCurrentScreen }) => {
           <span style={{ color: "#00003C" }}>Fish</span>
           <span style={{ color: "#ADD1E9" }}>Lens</span>
         </a>
-      </h1>{" "}
+      </h1>
       <div className="relative">
         <button
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}

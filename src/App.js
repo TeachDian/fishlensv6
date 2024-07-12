@@ -9,10 +9,13 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Register from './components/Register';
 import TermsNCondition from './components/TermsNCondition';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import ForgotPassword from './components/ForgotPassword';
 
 
 import Login from './components/Login';
 import AdminDashboard from './components/AdminDashboard';
+import ProtectedRoute from "./components/ProtectedRoute"; // Ensure the path is correct
 
 function App() {
   return (
@@ -24,7 +27,7 @@ function App() {
 
 function AppContent() {
   const location = useLocation();
-  const hideHeaderPaths = ['/register', '/login', '/termsncondition', '/adminDashboard'];
+  const hideHeaderPaths = ['/register', '/login', '/termsncondition', '/adminDashboard', '/privacyPolicy', '/forgotPassword'];
 
   return (
     <div className="App overflow-x-hidden">
@@ -38,8 +41,10 @@ function AppContent() {
           <Route path="/" element={<><Hero /><About /><Download /><Blog /><Contact /><Footer /></>} />
           <Route path="/register" element={<Register />} />
           <Route path="/termsncondition" element={<TermsNCondition />} />
+          <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/adminDashboard" element={<AdminDashboard />} />
+          <Route path="/forgotPassword" element={<ForgotPassword />} />
+          <Route path="/adminDashboard" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
         </Routes>
       </div>
     </div>
