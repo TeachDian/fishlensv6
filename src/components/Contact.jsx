@@ -1,4 +1,5 @@
 import React from "react";
+import Swal from 'sweetalert2'
 
 const Contact = () => {
   const onSubmit = async (event) => {
@@ -20,7 +21,11 @@ const Contact = () => {
     }).then((res) => res.json());
 
     if (res.success) {
-      console.log("Success", res);
+      Swal.fire({
+        title: "Success!",
+        text: "Message sent successfully!",
+        icon: "success"
+      });
     }
   };
 
