@@ -2,6 +2,32 @@
 
 import { v4 as uuidv4 } from "uuid";
 
+
+// // Set the app element for accessibility
+// Modal.setAppElement("#root");
+
+// const UserData = () => {
+//   const [filterInput, setFilterInput] = useState("");
+//   const [expandedRow, setExpandedRow] = useState(null);
+
+//   useEffect(() => {
+//     // Generate unique IDs for existing data without a userIdNumber
+//     data.forEach((item) => {
+//       if (!item.userIdNumber) {
+//         item.userIdNumber = uuidv4();
+//       }
+//     });
+//   }, []);
+
+//   const handleFilterChange = (e) => {
+//     const value = e.target.value || undefined;
+//     setGlobalFilter(value);
+//     setFilterInput(value);
+//   };
+
+
+
+
 // Sample data (replace with actual data as needed)
 export const data = [
   {

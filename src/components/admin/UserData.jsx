@@ -4,8 +4,6 @@ import Modal from "react-modal";
 import { v4 as uuidv4 } from "uuid";
 import { data, initializeData } from "./data"; // Import data and initialization function
 
-
-
 // Set the app element for accessibility
 Modal.setAppElement("#root");
 
@@ -23,30 +21,15 @@ const UserData = () => {
     setFilterInput(value);
   };
 
-
-// // Set the app element for accessibility
-// Modal.setAppElement("#root");
-
-// const UserData = () => {
-//   const [filterInput, setFilterInput] = useState("");
-//   const [expandedRow, setExpandedRow] = useState(null);
-
-//   useEffect(() => {
-//     // Generate unique IDs for existing data without a userIdNumber
-//     data.forEach((item) => {
-//       if (!item.userIdNumber) {
-//         item.userIdNumber = uuidv4();
-//       }
-//     });
-//   }, []);
-
-//   const handleFilterChange = (e) => {
-//     const value = e.target.value || undefined;
-//     setGlobalFilter(value);
-//     setFilterInput(value);
-//   };
-
-
+  const RefreshButton = ({ onClick }) => (
+    <button
+       className="px-8 ml-5 bg-[#00003C] text-white py-2 rounded-md"
+      onClick={onClick}
+      style={{ padding: "8px", borderRadius: "4px", cursor: "pointer" }}
+    >
+      Refresh
+    </button>
+  );
 
   const handleExpandRow = (row) => {
     setExpandedRow(expandedRow === row ? null : row);
@@ -66,6 +49,7 @@ const UserData = () => {
     () => [
       { Header: "Region", accessor: "region" },
       { Header: "Province", accessor: "province" },
+      { Header: "City/Town", accessor: "cityTown" },
       { Header: "User ID", accessor: "userIdNumber" },
       { Header: "Username", accessor: "username" },
       { Header: "First Name", accessor: "firstName" },
@@ -102,25 +86,52 @@ const UserData = () => {
       { Header: "Blood Type", accessor: "bloodType" },
       { Header: "Religion", accessor: "religion" },
       { Header: "Nationality", accessor: "nationality" },
-      { Header: "Highest Educational Attainment", accessor: "highestEducationalAttainment" },
+      {
+        Header: "Highest Educational Attainment",
+        accessor: "highestEducationalAttainment",
+      },
       { Header: "Emergency Contact", accessor: "emergencyContact" },
-      { Header: "Emergency Contact Number", accessor: "emergencyContactNumber" },
+      {
+        Header: "Emergency Contact Number",
+        accessor: "emergencyContactNumber",
+      },
       { Header: "Relationship", accessor: "emergrncyRelationship" },
       { Header: "Address", accessor: "emergrncyAddress" },
       { Header: "Main Source of Income", accessor: "mainSourceofIncome" },
-      { Header: "Main Source of Income Amount", accessor: "mainSourceofIncomeAmount" },
+      {
+        Header: "Main Source of Income Amount",
+        accessor: "mainSourceofIncomeAmount",
+      },
       { Header: "Other Source of Income", accessor: "otherSourceofIncome" },
-      { Header: "Other Source of Income Amount", accessor: "otherSourceofIncomeAmount" },
+      {
+        Header: "Other Source of Income Amount",
+        accessor: "otherSourceofIncomeAmount",
+      },
       { Header: "Name of Organization", accessor: "nameofOrganization" },
       { Header: "Member Since", accessor: "memberSince" },
-      { Header: "Position in Organization", accessor: "positioninOrganization" },
+      {
+        Header: "Position in Organization",
+        accessor: "positioninOrganization",
+      },
       { Header: "Name of Spouse", accessor: "nameofSpouse" },
       { Header: "Number of Children", accessor: "numberofchildren" },
       { Header: "Spouse Contact Number", accessor: "spouseContactnum" },
-      { Header: "Number of Children in School", accessor: "numberofchildreninSchool" },
-      { Header: "Number of Children out of School", accessor: "numberofchildrenoutSchool" },
-      { Header: "Number of Employed Family Members", accessor: "numberofEmployedfammem" },
-      { Header: "Number of Unemployed Family Members", accessor: "numberofUnemployedfammem" },
+      {
+        Header: "Number of Children in School",
+        accessor: "numberofchildreninSchool",
+      },
+      {
+        Header: "Number of Children out of School",
+        accessor: "numberofchildrenoutSchool",
+      },
+      {
+        Header: "Number of Employed Family Members",
+        accessor: "numberofEmployedfammem",
+      },
+      {
+        Header: "Number of Unemployed Family Members",
+        accessor: "numberofUnemployedfammem",
+      },
       {
         Header: "Actions",
         accessor: "detailedActions",
@@ -161,6 +172,13 @@ const UserData = () => {
     setGlobalFilter,
   } = tableInstance;
 
+  const handleRefresh = () => {
+    // Handle refresh logic here, e.g., re-initialize data
+    initializeData(data);
+    setFilterInput(""); // Clear filter input
+    setExpandedRow(null); // Collapse all expanded rows
+  };
+
   return (
     <div className="p-6 bg-white rounded shadow-md">
       <h2 className="text-2xl font-bold mb-4">User Data</h2>
@@ -171,8 +189,12 @@ const UserData = () => {
           placeholder={"Search all columns"}
           className="p-2 border border-gray-300 rounded"
         />
+        <RefreshButton onClick={handleRefresh} />
       </div>
-      <table {...getTableProps()} className="min-w-full bg-white border border-gray-200">
+      <table
+        {...getTableProps()}
+        className="min-w-full bg-white border border-gray-200"
+      >
         <thead>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()} className="border-b">
@@ -251,6 +273,5 @@ const UserData = () => {
     </div>
   );
 };
-
 
 export default UserData;
