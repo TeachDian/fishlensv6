@@ -105,7 +105,7 @@ const Reports = () => {
         />
         <RefreshButton onClick={handleRefresh} />
       </div>
-      <div className="overflow-x-auto">
+      <div className="">
         <table
           {...getTableProps()}
           className="min-w-full bg-white border border-gray-200"
