@@ -1,6 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios"; // Import Axios for making HTTP requests
 
 const PublishArticles = () => {
+  const [formData, setFormData] = useState({
+    newsTitle: "",
+    author: "",
+    newsDetails: "",
+    newsImage: null // Assuming you will handle file upload separately
+  });
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData({ ...formData, [id]: value });
+  };
+
+  const handleFileChange = (e) => {
+    setFormData({ ...formData, newsImage: e.target.files[0] });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Prepare form data for submission
+    const data = new FormData();
+    data.append("newsTitle", formData.newsTitle);
+    data.append("author", formData.author);
+    data.append("newsDetails", formData.newsDetails);
+    data.append("newsImage", formData.newsImage);
+
+    try {
+      const response = await axios.post("/api/news", data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      console.log("News published successfully:", response.data);
+      // Optionally, reset form state after successful submission
+      setFormData({
+        newsTitle: "",
+        author: "",
+        newsDetails: "",
+        newsImage: null
+      });
+    } catch (error) {
+      console.error("Error publishing news:", error);
+    }
+  };
+
   return (
     <div className="p-6 bg-white rounded shadow-md">
       <h2 className="text-2xl font-bold mb-4">Publish News</h2>
@@ -14,7 +60,7 @@ const PublishArticles = () => {
         </nav>
       </div>
 
-      <form className="grid grid-cols-1 gap-4">
+      <form className="grid grid-cols-1 gap-4" onSubmit={handleSubmit}>
         {/* News Title Section */}
         <div className="flex flex-col bg-gray-100 rounded-md p-4">
           <label htmlFor="newsTitle" className="text-sm font-medium pb-2">
@@ -23,8 +69,11 @@ const PublishArticles = () => {
           <input
             type="text"
             id="newsTitle"
+            value={formData.newsTitle}
+            onChange={handleChange}
             className="rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-500"
             placeholder="Enter News Title Here..."
+            required
           />
         </div>
 
@@ -37,8 +86,11 @@ const PublishArticles = () => {
             <input
               type="text"
               id="author"
+              value={formData.author}
+              onChange={handleChange}
               className="rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-500"
               placeholder="Enter Author Name Here..."
+              required
             />
           </div>
 
@@ -50,6 +102,7 @@ const PublishArticles = () => {
               <input
                 type="file"
                 id="newsImage"
+                onChange={handleFileChange}
                 className="hidden"
               />
               <label
@@ -70,9 +123,12 @@ const PublishArticles = () => {
           </label>
           <textarea
             id="newsDetails"
+            value={formData.newsDetails}
+            onChange={handleChange}
             rows={6}
             className="rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-500"
             placeholder="Enter News Details"
+            required
           ></textarea>
         </div>
 
@@ -88,7 +144,7 @@ const PublishArticles = () => {
         </div>
       </form>
     </div>
-  )
-}
+  );
+};
 
 export default PublishArticles;
