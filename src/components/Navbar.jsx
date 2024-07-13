@@ -77,7 +77,7 @@ const Navbar = () => {
             key={section}
             className={`p-4 font-medium ${activeSection === section ? "text-[#ADD1E9]" : ""}`}
           >
-            <a href={`#${section}`}>{section.charAt(0).toUpperCase() + section.slice(1)}</a>
+            <a href={`/#${section}`}>{section.charAt(0).toUpperCase() + section.slice(1)}</a>
           </li>
         ))}
         <li className="p-4 font-medium">

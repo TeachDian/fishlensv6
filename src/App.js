@@ -8,6 +8,7 @@ import Blog from './components/Blog';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Register from './components/Register';
+import RegisterAdmin from './components/RegisterAdmin';
 import TermsNCondition from './components/TermsNCondition';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import ForgotPassword from './components/ForgotPassword';
@@ -27,7 +28,7 @@ function App() {
 
 function AppContent() {
   const location = useLocation();
-  const hideHeaderPaths = ['/register', '/login', '/termsncondition', '/adminDashboard', '/privacyPolicy', '/forgotPassword'];
+  const hideHeaderPaths = ['/register','registerAdmin','/login', '/termsncondition', '/adminDashboard', '/privacyPolicy', '/forgotPassword',];
 
   return (
     <div className="App overflow-x-hidden">
@@ -40,6 +41,7 @@ function AppContent() {
         <Routes>
           <Route path="/" element={<><Hero /><About /><Download /><Blog /><Contact /><Footer /></>} />
           <Route path="/register" element={<Register />} />
+          <Route path="/registerAdmin" element={<RegisterAdmin />} />
           <Route path="/termsncondition" element={<TermsNCondition />} />
           <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
           <Route path="/login" element={<Login />} />

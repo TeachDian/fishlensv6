@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth, firestore } from "./firebase"; // Ensure the path is correct
+import { adminAuth, adminFirestore } from "./firebase"; // Use the correct auth instance for admin
 import { collection, addDoc } from "firebase/firestore";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
-const RegisterUser = () => {
+const RegisterAdmin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -12,16 +13,16 @@ const RegisterUser = () => {
   const handleRegister = async (event) => {
     event.preventDefault();
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      await addDoc(collection(firestore, "users"), {
+      const userCredential = await createUserWithEmailAndPassword(adminAuth, email, password);
+      await addDoc(collection(adminFirestore, "users"), {
         uid: userCredential.user.uid,
         email,
         name,
-        role: "user",
+        role: "admin",
       });
       Swal.fire({
         title: "Success!",
-        text: "User registered successfully!",
+        text: "Admin registered successfully!",
         icon: "success",
       });
     } catch (error) {
@@ -36,7 +37,7 @@ const RegisterUser = () => {
   return (
     <div className="flex min-h-screen justify-center items-center bg-gradient-to-b from-[#DDF1FE] to-[#ADD1E9]">
       <div className="w-full max-w-sm p-8 bg-white bg-opacity-80 rounded-lg shadow-lg">
-        <h2 className="mb-4 text-2xl font-bold text-[#00003C]">User Register</h2>
+        <h2 className="mb-4 text-2xl font-bold text-[#00003C]">Admin Register</h2>
         <form onSubmit={handleRegister}>
           <input
             type="text"
@@ -63,12 +64,20 @@ const RegisterUser = () => {
             required
           />
           <button type="submit" className="w-full bg-[#00003C] text-white py-2 rounded-md">
-            Register as User
+            Register as Admin
           </button>
         </form>
+        <div className="mt-4 text-center">
+          <p className="text-gray-700">
+            Already registered?{" "}
+            <Link to="/login" className="text-[#00003C] font-bold">
+              Login here
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );
 };
 
-export default RegisterUser;
+export default RegisterAdmin;

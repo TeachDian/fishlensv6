@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
-import { firestore } from "./firebase"; // Import your Firebase configuration
+import { userFirestore } from "./firebase"; // Import your Firebase configuration
 import RegisterRegions from "./registerRegions"; // Updated component for regions selection
 import RegisterReligions from "./registerReligions"; // Updated component for religions selection
 import { registerRegionsData } from "./registerRegionsData";
@@ -49,7 +49,7 @@ const Register = () => {
       );
       const user = userCredential.user;
 
-      await setDoc(doc(firestore, "users", user.uid), {
+      await setDoc(doc(userFirestore , "users", user.uid), {
         firstName,
         middleName,
         lastName,
