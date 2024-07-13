@@ -8,6 +8,7 @@ import Blog from './components/Blog';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Register from './components/Register';
+import Team from './components/Team';
 import RegisterAdmin from './components/RegisterAdmin';
 import TermsNCondition from './components/TermsNCondition';
 import PrivacyPolicy from './components/PrivacyPolicy';
@@ -40,6 +41,7 @@ function AppContent() {
       <div>
         <Routes>
           <Route path="/" element={<><Hero /><About /><Download /><Blog /><Contact /><Footer /></>} />
+          <Route path="/team" element={<><Team/><Footer /></>}/>
           <Route path="/register" element={<Register />} />
           <Route path="/registerAdmin" element={<RegisterAdmin />} />
           <Route path="/termsncondition" element={<TermsNCondition />} />

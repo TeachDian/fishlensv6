@@ -39,7 +39,7 @@ const Footer = () => {
           <h6 className="font-medium text-[#424242]">General</h6>
           <ul>
             <li className="py-2 text-sm"><a href="#blog">Blogs</a></li>
-            <li className="py-2 text-sm"><a href="#register">Register</a></li>
+            <li className="py-2 text-sm"><a href="/register">Register</a></li>
           </ul>
         </div>
         <div>
@@ -52,13 +52,12 @@ const Footer = () => {
           <h6 className="font-medium text-[#424242]">Company</h6>
           <ul>
             <li className="py-2 text-sm"><a href="#about">About</a></li>
-            <li className="py-2 text-sm"><a href="#team">Team</a></li>
+            <li className="py-2 text-sm"><a href="/team">Team</a></li>
           </ul>
         </div>
         <div>
           <h6 className="font-medium text-[#424242]">Legal</h6>
           <ul>
-            <li className="py-2 text-sm"><a href="#claim">Claim</a></li>
             <li className="py-2 text-sm"><a href="#privacy">Privacy</a></li>
             <li className="py-2 text-sm"><a href="#terms">Policy</a></li>
             <li className="py-2 text-sm"><a href="#terms">Terms</a></li>
