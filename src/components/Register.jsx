@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
-import { userFirestore } from "./firebase"; // Import your Firebase configuration
+import { userAuth, userFirestore } from "./firebase"; // Import your Firebase configuration
 import RegisterRegions from "./registerRegions"; // Updated component for regions selection
 import RegisterReligions from "./registerReligions"; // Updated component for religions selection
 import { registerRegionsData } from "./registerRegionsData";
@@ -40,16 +40,15 @@ const Register = () => {
       return;
     }
 
-    const auth = getAuth();
     try {
       const userCredential = await createUserWithEmailAndPassword(
-        auth,
+        userAuth,
         email,
         password
       );
       const user = userCredential.user;
 
-      await setDoc(doc(userFirestore , "users", user.uid), {
+      await setDoc(doc(userFirestore, "users", user.uid), {
         firstName,
         middleName,
         lastName,
@@ -63,15 +62,6 @@ const Register = () => {
         email: user.email,
       });
 
-      Swal.fire({
-        title: "Success!",
-        text: "Logged in successfully!",
-        icon: "success",
-      });
-      setTimeout(() => {
-        setMessage("");
-        navigate("/login");
-      }, 2000);
     } catch (error) {
       Swal.fire({
         title: "Error!",
@@ -268,12 +258,7 @@ const Register = () => {
           </div>
           <div className="mb-4">
             <label className="flex items-center">
-              <input
-                type="checkbox"
-                name="agree"
-                className="mr-2"
-                required
-              />
+              <input type="checkbox" name="agree" className="mr-2" required />
               <span className="text-gray-700">
                 I Agree to the{" "}
                 <a href="/termsncondition" className="text-[#ADD1E9]">
@@ -285,6 +270,9 @@ const Register = () => {
           <button
             type="submit"
             className="w-full bg-[#00003C] text-white py-2 rounded-md"
+            onClick={() => {
+              Swal.fire("Registered Successfully!", "Pending Registration", "success");
+            }}
           >
             Register
           </button>

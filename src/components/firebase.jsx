@@ -39,4 +39,4 @@ const userAuth = getAuth(userApp);
 const adminFirestore = getFirestore(adminApp);
 const adminAuth = getAuth(adminApp);
 
-export { userFirestore, userAuth, adminFirestore, adminAuth };
+export { userApp, userFirestore, userAuth, adminFirestore, adminAuth };
