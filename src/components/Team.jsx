@@ -37,7 +37,12 @@ const Team = () => {
 
   return (
     <section id="team">
-      <div className="w-full bg-white py-20 px-4 m-10">
+      <div className="w-full bg-white overflow-hidden py-20 px-4 m-10">
+        <p className="text-[#00003C] text-3xl text-center font-bold pb-8">
+          Meet the 
+          <span style={{ color: "#00003C" }}> Fish</span>
+          <span style={{ color: "#ADD1E9" }}>Lens </span> Team
+        </p>
         <div className="max-w-[1240px] mx-auto grid md:grid-cols-3 gap-8">
           {members.map((article, index) => (
             <div
@@ -45,7 +50,7 @@ const Team = () => {
               className="w-full shadow-xl flex flex-col p-4 my-4 rounded-lg hover:scale-105 duration-300"
             >
               <img
-                className="w-full h-48 object-cover rounded-t-lg cursor-pointer"
+                className="w-full h-56 object-cover rounded-t-lg cursor-pointer"
                 src={article.image}
                 alt={article.title}
                 onClick={() => openModal(index)}
