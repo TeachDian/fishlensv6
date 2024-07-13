@@ -1,5 +1,6 @@
-import React from "react";
-import Swal from 'sweetalert2'
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Contact = () => {
   const onSubmit = async (event) => {
@@ -24,7 +25,7 @@ const Contact = () => {
       Swal.fire({
         title: "Success!",
         text: "Message sent successfully!",
-        icon: "success"
+        icon: "success",
       });
     }
   };
@@ -51,6 +52,7 @@ const Contact = () => {
               <input
                 name="subject"
                 type="text"
+                required
                 className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md"
                 placeholder="What is your concern"
               />
@@ -60,6 +62,7 @@ const Contact = () => {
               <input
                 name="fullname"
                 type="text"
+                required
                 className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md"
                 placeholder="Enter your full name"
               />
@@ -69,6 +72,7 @@ const Contact = () => {
               <input
                 name="email"
                 type="email"
+                required
                 className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md"
                 placeholder="Your@email.com"
               />
@@ -77,6 +81,7 @@ const Contact = () => {
               <label className="block text-gray-700">Message</label>
               <textarea
                 name="message"
+                required
                 className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md"
                 placeholder="Message"
                 rows="4"
@@ -84,10 +89,10 @@ const Contact = () => {
             </div>
             <div className="mb-4">
               <label className="flex items-center">
-                <input type="checkbox" className="mr-2" />
+                <input type="checkbox" required className="mr-2" />
                 <span className="text-gray-700">
                   You agree to our friendly{" "}
-                  <a href="/" className="text-[#ADD1E9]">
+                  <a href="/privacyPolicy" className="text-[#ADD1E9]">
                     privacy policy
                   </a>
                   .
