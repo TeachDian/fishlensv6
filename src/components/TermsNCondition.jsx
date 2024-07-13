@@ -5,7 +5,7 @@ const TermsNCondition = () => {
   const navigate = useNavigate();
 
   const handleBackToRegister = () => {
-    navigate('/register');
+    navigate(-1);
   };
 
   return (
@@ -35,7 +35,7 @@ const TermsNCondition = () => {
           onClick={handleBackToRegister}
           className="w-full bg-[#00003C] text-white py-2 rounded-md mt-6"
         >
-          Back to Register
+          Back to Page
         </button>
       </div>
     </section>

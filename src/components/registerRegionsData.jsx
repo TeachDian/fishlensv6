@@ -1,23 +1,5 @@
 // registerRegionsData.js
 export const registerRegionsData = {
-  "Region I – Ilocos Region": {
-    provinces: {
-      "Province 3": ["Town 5", "Town 6"],
-      "Province 4": ["Town 7", "Town 8"],
-    },
-  },
-  "Region II – Cagayan Valley": {
-    provinces: {
-      "Province 1": ["Town 1", "Town 2"],
-      "Province 2": ["Town 3", "Town 4"],
-    },
-  },
-  "Region III – Central Luzon": {
-    provinces: {
-      "Province 3": ["Town 5", "Town 6"],
-      "Province 4": ["Town 7", "Town 8"],
-    },
-  },
   "Region IV‑A – CALABARZON": {
     provinces: {
       "Batangas Province": [
@@ -171,83 +153,260 @@ export const registerRegionsData = {
       ],
     },
   },
-  "MIMAROPA Region": {
-    provinces: {
-      "Province 3": ["Town 5", "Town 6"],
-      "Province 4": ["Town 7", "Town 8"],
-    },
-  },
-  "Region V – Bicol Region": {
-    provinces: {
-      "Province 3": ["Town 5", "Town 6"],
-      "Province 4": ["Town 7", "Town 8"],
-    },
-  },
-  "Region VI – Western Visayas": {
-    provinces: {
-      "Province 3": ["Town 5", "Town 6"],
-      "Province 4": ["Town 7", "Town 8"],
-    },
-  },
-  "Region VII – Central Visayas": {
-    provinces: {
-      "Province 3": ["Town 5", "Town 6"],
-      "Province 4": ["Town 7", "Town 8"],
-    },
-  },
-  "Region VIII – Eastern Visayas": {
-    provinces: {
-      "Province 3": ["Town 5", "Town 6"],
-      "Province 4": ["Town 7", "Town 8"],
-    },
-  },
-  "Region IX – Zamboanga Peninsula": {
-    provinces: {
-      "Province 3": ["Town 5", "Town 6"],
-      "Province 4": ["Town 7", "Town 8"],
-    },
-  },
-  "Region X – Northern Mindanao": {
-    provinces: {
-      "Province 3": ["Town 5", "Town 6"],
-      "Province 4": ["Town 7", "Town 8"],
-    },
-  },
-  "Region XI – Davao Region": {
-    provinces: {
-      "Province 3": ["Town 5", "Town 6"],
-      "Province 4": ["Town 7", "Town 8"],
-    },
-  },
-  "Region XII – SOCCSKSARGEN": {
-    provinces: {
-      "Province 3": ["Town 5", "Town 6"],
-      "Province 4": ["Town 7", "Town 8"],
-    },
-  },
-  "Region XIII – Caraga": {
-    provinces: {
-      "Province 3": ["Town 5", "Town 6"],
-      "Province 4": ["Town 7", "Town 8"],
-    },
-  },
-  "NCR – National Capital Region": {
-    provinces: {
-      "Province 3": ["Town 5", "Town 6"],
-      "Province 4": ["Town 7", "Town 8"],
-    },
-  },
-  "CAR – Cordillera Administrative Region": {
-    provinces: {
-      "Province 3": ["Town 5", "Town 6"],
-      "Province 4": ["Town 7", "Town 8"],
-    },
-  },
-  "BARMM – Bangsamoro Autonomous Region in Muslim Mindanao": {
-    provinces: {
-      "Province 3": ["Town 5", "Town 6"],
-      "Province 4": ["Town 7", "Town 8"],
-    },
-  },
+
   // Add more regions as needed
 };
+
+// // registerRegionsData.js
+// export const registerRegionsData = {
+//   "Region I – Ilocos Region": {
+//     provinces: {
+//       "Province 3": ["Town 5", "Town 6"],
+//       "Province 4": ["Town 7", "Town 8"],
+//     },
+//   },
+//   "Region II – Cagayan Valley": {
+//     provinces: {
+//       "Province 1": ["Town 1", "Town 2"],
+//       "Province 2": ["Town 3", "Town 4"],
+//     },
+//   },
+//   "Region III – Central Luzon": {
+//     provinces: {
+//       "Province 3": ["Town 5", "Town 6"],
+//       "Province 4": ["Town 7", "Town 8"],
+//     },
+//   },
+//   "Region IV‑A – CALABARZON": {
+//     provinces: {
+//       "Batangas Province": [
+//         "Batangas City",
+//         "Agoncillo",
+//         "Alitagtag",
+//         "Balayan",
+//         "Balete",
+//         "Bauan",
+//         "Calaca",
+//         "Calatagan",
+//         "Cuenca",
+//         "Ibaan",
+//         "Laurel",
+//         "Lemery",
+//         "Lian",
+//         "Lobo",
+//         "Mabini",
+//         "Malvar",
+//         "Mataasnakahoy",
+//         "Nasugbu",
+//         "Padre Garcia",
+//         "Rosario",
+//         "San Jose",
+//         "San Juan",
+//         "San Luis",
+//         "San Nicolas",
+//         "San Pascual",
+//         "Santa Teresita",
+//         "Santo Tomas",
+//         "Taal",
+//         "Talisay",
+//         "Tanauan",
+//         "Taysan",
+//         "Tingloy",
+//         "Tuy",
+//       ],
+//       "Cavite Province": [
+//         "Bacoor City",
+//         "Cavite City",
+//         "Dasmariñas City",
+//         "General Trias City",
+//         "Imus City",
+//         "Trece Martires City",
+//         "Alfonso",
+//         "Amadeo",
+//         "Carmona",
+//         "General Emilio Aguinaldo",
+//         "General Mariano Alvarez",
+//         "Indang",
+//         "Kawit",
+//         "Magallanes",
+//         "Maragondon",
+//         "Mendez",
+//         "Naic",
+//         "Noveleta",
+//         "Rosario",
+//         "Silang",
+//         "Tagaytay City",
+//         "Tanza",
+//         "Ternate",
+//       ],
+//       "Laguna Province": [
+//         "Alaminos",
+//         "Bay",
+//         "Biñan City",
+//         "Cabuyao City",
+//         "Calamba City",
+//         "Cavinti",
+//         "Famy",
+//         "Kalayaan",
+//         "Liliw",
+//         "Los Baños",
+//         "Luisiana",
+//         "Lumban",
+//         "Mabitac",
+//         "Magdalena",
+//         "Majayjay",
+//         "Nagcarlan",
+//         "Pakil",
+//         "Pangil",
+//         "Pagsanjan",
+//         "Paete",
+//         "Pila",
+//         "Rizal",
+//         "San Pablo City",
+//         "San Pedro City",
+//         "Santa Cruz",
+//         "Santa Maria",
+//         "Siniloan",
+//         "Victoria",
+//       ],
+//       "Quezon Province": [
+//         "Lucena City",
+//         "Agdangan",
+//         "Alabat",
+//         "Atimonan",
+//         "Buenavista",
+//         "Burdeos",
+//         "Calauag",
+//         "Candelaria",
+//         "Catanauan",
+//         "Dolores",
+//         "General Luna",
+//         "General Nakar",
+//         "Guinayangan",
+//         "Gumaca",
+//         "Infanta",
+//         "Jomalig",
+//         "Lopez",
+//         "Luban",
+//         "Macalelon",
+//         "Mauban",
+//         "Mulanay",
+//         "Padre Burgos",
+//         "Pagbilao",
+//         "Panukulan",
+//         "Patnanungan",
+//         "Perez",
+//         "Pitogo",
+//         "Pilar",
+//         "Polillo",
+//         "Quezon",
+//         "Real",
+//         "Sampaloc",
+//         "San Andres",
+//         "San Antonio",
+//         "San Francisco",
+//         "San Narciso",
+//         "Sariaya",
+//         "Tagkawayan",
+//         "Tayabas City",
+//         "Tiaong",
+//         "Unisan",
+//       ],
+//       "Rizal Province": [
+//         "Angono",
+//         "Antipolo City",
+//         "Baras",
+//         "Binangonan",
+//         "Cainta",
+//         "Cardona",
+//         "Jalajala",
+//         "Morong",
+//         "Pililla",
+//         "Rodriguez",
+//         "San Mateo",
+//         "Tanay",
+//         "Taytay",
+//         "Teresa",
+//       ],
+//     },
+//   },
+//   "MIMAROPA Region": {
+//     provinces: {
+//       "Province 3": ["Town 5", "Town 6"],
+//       "Province 4": ["Town 7", "Town 8"],
+//     },
+//   },
+//   "Region V – Bicol Region": {
+//     provinces: {
+//       "Province 3": ["Town 5", "Town 6"],
+//       "Province 4": ["Town 7", "Town 8"],
+//     },
+//   },
+//   "Region VI – Western Visayas": {
+//     provinces: {
+//       "Province 3": ["Town 5", "Town 6"],
+//       "Province 4": ["Town 7", "Town 8"],
+//     },
+//   },
+//   "Region VII – Central Visayas": {
+//     provinces: {
+//       "Province 3": ["Town 5", "Town 6"],
+//       "Province 4": ["Town 7", "Town 8"],
+//     },
+//   },
+//   "Region VIII – Eastern Visayas": {
+//     provinces: {
+//       "Province 3": ["Town 5", "Town 6"],
+//       "Province 4": ["Town 7", "Town 8"],
+//     },
+//   },
+//   "Region IX – Zamboanga Peninsula": {
+//     provinces: {
+//       "Province 3": ["Town 5", "Town 6"],
+//       "Province 4": ["Town 7", "Town 8"],
+//     },
+//   },
+//   "Region X – Northern Mindanao": {
+//     provinces: {
+//       "Province 3": ["Town 5", "Town 6"],
+//       "Province 4": ["Town 7", "Town 8"],
+//     },
+//   },
+//   "Region XI – Davao Region": {
+//     provinces: {
+//       "Province 3": ["Town 5", "Town 6"],
+//       "Province 4": ["Town 7", "Town 8"],
+//     },
+//   },
+//   "Region XII – SOCCSKSARGEN": {
+//     provinces: {
+//       "Province 3": ["Town 5", "Town 6"],
+//       "Province 4": ["Town 7", "Town 8"],
+//     },
+//   },
+//   "Region XIII – Caraga": {
+//     provinces: {
+//       "Province 3": ["Town 5", "Town 6"],
+//       "Province 4": ["Town 7", "Town 8"],
+//     },
+//   },
+//   "NCR – National Capital Region": {
+//     provinces: {
+//       "Province 3": ["Town 5", "Town 6"],
+//       "Province 4": ["Town 7", "Town 8"],
+//     },
+//   },
+//   "CAR – Cordillera Administrative Region": {
+//     provinces: {
+//       "Province 3": ["Town 5", "Town 6"],
+//       "Province 4": ["Town 7", "Town 8"],
+//     },
+//   },
+//   "BARMM – Bangsamoro Autonomous Region in Muslim Mindanao": {
+//     provinces: {
+//       "Province 3": ["Town 5", "Town 6"],
+//       "Province 4": ["Town 7", "Town 8"],
+//     },
+//   },
+//   // Add more regions as needed
+// };

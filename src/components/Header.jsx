@@ -3,7 +3,7 @@ import { LuUser2 } from "react-icons/lu";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
-import { auth } from "./firebase"; // Ensure the path is correct
+import { adminAuth } from "./firebase"; // Ensure the path is correct
 
 const Header = ({ setCurrentScreen }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -12,7 +12,7 @@ const Header = ({ setCurrentScreen }) => {
   const handleLogout = () => {
     const confirmLogout = window.confirm("Are you sure you want to log out?");
     if (confirmLogout) {
-      signOut(auth)
+      signOut(adminAuth)
         .then(() => {
           navigate("/login");
         })

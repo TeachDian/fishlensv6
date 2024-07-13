@@ -92,7 +92,7 @@ const Contact = () => {
                 <input type="checkbox" required className="mr-2" />
                 <span className="text-gray-700">
                   You agree to our friendly{" "}
-                  <a href="/privacyPolicy" className="text-[#ADD1E9]">
+                  <a href="/termsncondition" className="text-[#ADD1E9]">
                     privacy policy
                   </a>
                   .

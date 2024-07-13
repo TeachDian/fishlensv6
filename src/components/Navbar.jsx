@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
-import { Link } from 'react-router-dom';
-
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false); // State for mobile menu
@@ -62,7 +61,9 @@ const Navbar = () => {
   return (
     <div
       className={`flex justify-between items-center h-24 max-w-[1400px] mx-auto px-4 text-[#] ${
-        isSticky ? "fixed inset-x-0 top-0 z-50 bg-[#ffffff] justify-between items-center h-24 max-w-[1400px] mx-auto px-4 text-[#]" : ""
+        isSticky
+          ? "fixed inset-x-0 top-0 z-50 bg-[#ffffff] justify-between items-center h-24 max-w-[1400px] mx-auto px-4 text-[#]"
+          : ""
       }`}
     >
       <h1 className="w-full text-3xl font-bold text-[#424242]">
@@ -75,13 +76,20 @@ const Navbar = () => {
         {sections.map((section) => (
           <li
             key={section}
-            className={`p-4 font-medium ${activeSection === section ? "text-[#ADD1E9]" : ""}`}
+            className={`p-4 font-medium ${
+              activeSection === section ? "text-[#ADD1E9]" : ""
+            }`}
           >
-            <a href={`#${section}`}>{section.charAt(0).toUpperCase() + section.slice(1)}</a>
+            <a href={`/#${section}`}>
+              {section.charAt(0).toUpperCase() + section.slice(1)}
+            </a>
           </li>
         ))}
         <li className="p-4 font-medium">
-          <a href="/register" className="button bg-[#00003C] font-medium h-10 text-white px-5 rounded-md text-[14px]">
+          <a
+            href="/register"
+            className="button bg-[#00003C] font-medium h-10 text-white px-5 rounded-md text-[14px]"
+          >
             REGISTER
           </a>
         </li>
@@ -105,14 +113,21 @@ const Navbar = () => {
         {sections.map((section) => (
           <li
             key={section}
-            className={`p-4 border-b border-gray-600 ${activeSection === section ? "text-[#ADD1E9]" : ""}`}
+            className={`p-4 border-b border-gray-600 ${
+              activeSection === section ? "text-[#ADD1E9]" : ""
+            }`}
             onClick={handleNav}
           >
-            <a href={`#${section}`}>{section.charAt(0).toUpperCase() + section.slice(1)}</a>
+            <a href={`#${section}`}>
+              {section.charAt(0).toUpperCase() + section.slice(1)}
+            </a>
           </li>
         ))}
         <li className="p-4 border-b border-gray-600" onClick={handleNav}>
-          <a href="/register" className="button bg-[#00003C] font-medium h-10 text-white px-5 rounded-md text-[14px]">
+          <a
+            href="/register"
+            className="button bg-[#00003C] font-medium h-10 text-white px-5 rounded-md text-[14px]"
+          >
             REGISTER
           </a>
         </li>

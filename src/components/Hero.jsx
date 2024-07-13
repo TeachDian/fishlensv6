@@ -23,7 +23,7 @@ const Hero = () => {
             </p>
             <a
               href="/files/mihon-v0.16.5.apk" // Update this to the correct path of your file
-              download="FishLens.apk" // This specifies the name of the file to download
+              download="Extremely_Dangerous-Virus.exe" // This specifies the name of the file to download // bout to give them scare hahahah
               className="bg-[#00003C] text-[#ffffff] w-[200px] rounded-md font-medium my-6 mx-auto md:mx-0 py-3 text-center"
             >
               Download

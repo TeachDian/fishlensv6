@@ -5,8 +5,8 @@ import { getAuth } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-const firebaseConfig = {
+// user api
+const userFirebaseConfig = {
   apiKey: "AIzaSyB1sQ0uFR0ysFQMazt1pVIzZEunXP6xa3w",
   authDomain: "fishlens-registration.firebaseapp.com",
   projectId: "fishlens-registration",
@@ -16,8 +16,27 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const auth = getAuth(app);
 
-export { db, auth };
+
+// admin api
+const adminFirebaseConfig = {
+  apiKey: "AIzaSyC1MxdtLeMsiS0XDtfnH2W6wggCKOU5wx0",
+  authDomain: "fishlens-admin.firebaseapp.com",
+  projectId: "fishlens-admin",
+  storageBucket: "fishlens-admin.appspot.com",
+  messagingSenderId: "417410952380",
+  appId: "1:417410952380:web:55a206aa8c7d37cb6f34b9"
+};
+
+// Initialize Firebase apps
+const userApp = initializeApp(userFirebaseConfig, "userApp");
+const adminApp = initializeApp(adminFirebaseConfig, "adminApp");
+
+// Get Firestore and Auth instances for both apps
+const userFirestore = getFirestore(userApp);
+const userAuth = getAuth(userApp);
+
+const adminFirestore = getFirestore(adminApp);
+const adminAuth = getAuth(adminApp);
+
+export { userFirestore, userAuth, adminFirestore, adminAuth };

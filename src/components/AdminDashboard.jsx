@@ -6,7 +6,6 @@ import Reports from "./admin/Reports";
 import UserData from "./admin/UserData";
 import GeoMapping from "./admin/GeoMapping";
 import PublishArticles from "./admin/PublishArticles";
-import Regions from "./admin/Regions";
 import Profile from "./admin/Profile"; // Import the Profile component
 
 const AdminDashboard = () => {
@@ -24,8 +23,6 @@ const AdminDashboard = () => {
         return <GeoMapping />;
       case "publishArticles":
         return <PublishArticles />;
-      case "regions":
-        return <Regions />;
       case "profile":
         return <Profile />; // Add the Profile screen
       default:
@@ -34,7 +31,7 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div id="adminDashboard" className="min-h-screen  overflow-x-scroll bg-[#F6F9FF]">
+    <div id="adminDashboard" className="min-h-screen  overflow-x-scroll bg-[#DDF1FE]">
       <Header setCurrentScreen={setCurrentScreen} /> {/* Add the Header */}
       <div className="flex flex-1">
         <AdminSidebar

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "./firebase"; // Ensure the path is correct
+import { adminAuth } from "./firebase"; // Use the correct auth instance for admin
 import Swal from "sweetalert2";
 import FishLensLogo from "../assets/img/fishlensT.png"; // Add your logo image to the assets folder
 
@@ -13,7 +13,7 @@ const Login = () => {
   const handleLogin = async (event) => {
     event.preventDefault();
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      await signInWithEmailAndPassword(adminAuth, email, password);
       Swal.fire({
         title: "Success!",
         text: "Logged in successfully!",

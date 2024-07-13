@@ -1,6 +1,7 @@
 import React, { useMemo, useState, useEffect } from "react";
 import { useTable, useFilters, useSortBy, useGlobalFilter } from "react-table";
 import Modal from "react-modal";
+import { v4 as uuidv4 } from "uuid";
 import { data, initializeData } from "./data"; // Import data and initialization function
 import GeoMapping from "./GeoMapping"; // Import GeoMapping component
 
@@ -9,7 +10,7 @@ Modal.setAppElement("#root");
 
 const RefreshButton = ({ onClick }) => (
   <button
-     className="px-8 ml-5 bg-[#00003C] text-white py-2 rounded-md"
+    className="px-8 ml-5 bg-[#00003C] text-white py-2 rounded-md"
     onClick={onClick}
     style={{ padding: "8px", borderRadius: "4px", cursor: "pointer" }}
   >
@@ -37,12 +38,13 @@ const Reports = () => {
 
   const mainColumns = useMemo(
     () => [
-      { Header: "Status", accessor: "reportStatus" },
-      { Header: "Date", accessor: "reportDate" },
       { Header: "Report ID", accessor: "reportIdNumber" },
-      { Header: "User ID", accessor: "userIdNumber" },
-      { Header: "Name", accessor: "firstName" },
       { Header: "Coordinates", accessor: "coordinates" },
+      { Header: "Region", accessor: "region" },
+      { Header: "Province", accessor: "province" },
+      { Header: "City/Town", accessor: "cityTown" },
+      { Header: "User ID", accessor: "userIdNumber" },
+      { Header: "Username", accessor: "username" },
       {
         Header: "Actions",
         accessor: "actions",
@@ -52,7 +54,7 @@ const Reports = () => {
               className="text-blue-500 hover:text-blue-700"
               onClick={() => handleExpandRow(row.original)}
             >
-              {expandedRow === row.original ? "View Less" : "View More"}
+              {expandedRow === row.original ? "Show Less" : "Show More"}
             </button>
           </div>
         ),
@@ -115,7 +117,7 @@ const Reports = () => {
           </button>
         </div>
       </div>
-      <div className="">
+      <div className="overflow-x-auto">
         <table
           {...getTableProps()}
           className="min-w-full bg-white border border-gray-200"
