@@ -179,7 +179,7 @@ const UserData = () => {
 
   return (
     <div className="p-6 bg-white rounded shadow-md">
-      <h2 className="text-2xl font-bold mb-4">User Data</h2>
+      <h2 className="text-2xl font-bold mb-4">User List</h2>
       <div className="mb-4">
         <input
           value={filterInput}

@@ -24,15 +24,15 @@ const AdminSidebar = ({ currentScreen, setCurrentScreen }) => {
   ];
 
   return (
-    <aside className="bg-white text-[#00003C] w-64 min-h-screen flex flex-col">
-      <div className="pt-4">
+    <aside className="bg-white text-[#00003C] w-[300px] min-h-screen flex flex-col">
+      <div className="pt-1">
         <nav className="flex-1">
-          <ul className="w-[256px]">
+          <ul className="w-[300px]">
             {menuItems.map((item) => (
-              <li key={item.screen} className="m-1">
+              <li key={item.screen} className="my-2 mx-4">
                 <button
                   onClick={() => setCurrentScreen(item.screen)}
-                  className={`flex items-center w-full p-4 text-lg rounded hover:bg-[#F6F9FF] focus:outline-none ${
+                  className={`flex items-center w-[260px] p-4 text-lg rounded hover:bg-[#F6F9FF] focus:outline-none ${
                     currentScreen === item.screen ? "bg-[#F6F9FF]" : ""
                   }`}
                 >

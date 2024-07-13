@@ -28,7 +28,7 @@ function App() {
 
 function AppContent() {
   const location = useLocation();
-  const hideHeaderPaths = ['/register','registerAdmin','/login', '/termsncondition', '/adminDashboard', '/privacyPolicy', '/forgotPassword',];
+  const hideHeaderPaths = ['registerAdmin','/login', '/termsncondition', '/adminDashboard', '/privacyPolicy', '/forgotPassword',];
 
   return (
     <div className="App overflow-x-hidden">
