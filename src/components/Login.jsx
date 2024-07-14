@@ -22,7 +22,8 @@ const Login = () => {
       setTimeout(() => {
         navigate("/adminDashboard"); // Redirect to /adminDashboard after 1000ms
         setLoading(false); // Set loading to false
-      }, 3000);
+      }, 30000); // tweak the time if needed
+
     } catch (error) {
       Swal.fire({
         title: "Error!",
@@ -34,7 +35,7 @@ const Login = () => {
   };
 
   if (loading) {
-    return <Loader />; // Show loader when loading
+    return <Loader2 />; // Show loader when loading
   }
 
   return (
