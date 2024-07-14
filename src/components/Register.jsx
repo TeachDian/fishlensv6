@@ -1,3 +1,5 @@
+// register.jsx
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import RegisterRegions from "./registerRegions"; // Updated component for regions selection
@@ -68,7 +70,13 @@ const Register = () => {
         town: selectedTown,
         email: user.email,
       });
+      console.log("Registered Successfully!");
+      setMessage("Registered Successfully!");
 
+      // Optionally redirect the user after successful registration
+      setTimeout(() => {
+        navigate("/register");
+      }, 2000);
     } catch (error) {
       Swal.fire({
         title: "Error!",
@@ -128,6 +136,7 @@ const Register = () => {
             <input
               className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md"
               type="password"
+              autocomplete="off"
               placeholder="Enter A Strong Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -139,6 +148,7 @@ const Register = () => {
             <input
               className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md"
               type="password"
+              autocomplete="off"
               placeholder="Repeate Password"
               value={retypePassword}
               onChange={(e) => setRetypePassword(e.target.value)}
@@ -281,6 +291,8 @@ const Register = () => {
             Register
           </button>
         </form>
+        {message && <p className="mt-4 text-green-500">{message}</p>}
+        {error && <p className="mt-4 text-red-500">{error}</p>}
       </div>
     </section>
   );
