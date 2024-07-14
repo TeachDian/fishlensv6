@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const GeoMapping = () => {
   const [location, setLocation] = useState("Laguna, Philippines");
   const [searchTerm, setSearchTerm] = useState("");
+  const [mapData, setMapData] = useState({});
+  const [reportedCases, setReportedCases] = useState([]);
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
@@ -10,9 +13,40 @@ const GeoMapping = () => {
 
   const handleSearchSubmit = (event) => {
     event.preventDefault();
-    setLocation(searchTerm);
-    setSearchTerm("");
+    axios.get(`/api/search?q=${searchTerm}`)
+     .then(response => {
+        const newLocation = response.data.location;
+        setLocation(newLocation);
+        setSearchTerm("");
+        axios.get(`/api/map-data?location=${newLocation}`)
+         .then(response => {
+            setMapData(response.data);
+            axios.get(`/api/reported-cases?location=${newLocation}`)
+             .then(response => {
+                setReportedCases(response.data);
+              })
+             .catch(error => {
+                console.error(error);
+              });
+          })
+         .catch(error => {
+            console.error(error);
+          });
+      })
+     .catch(error => {
+        console.error(error);
+      });
   };
+
+  useEffect(() => {
+    axios.get(`/api/reported-cases?location=${location}`)
+     .then(response => {
+        setReportedCases(response.data);
+      })
+     .catch(error => {
+        console.error(error);
+      });
+  }, [location]);
 
   return (
     <div className="container mx-auto p-4">
@@ -29,7 +63,6 @@ const GeoMapping = () => {
           <button
             type="submit"
             className="ml-2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
-            style={{ backgroundColor: "#00003C" }}
           >
             Search
           </button>
@@ -39,18 +72,29 @@ const GeoMapping = () => {
         <div>
           <h2 className="text-xl font-bold mb-2">{location}</h2>
           {/* Map component with the selected location */}
-          <iframe
-            title="Map"
-            src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12500296.453431794!2d120.9352773186491!3d14.580350117995736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a0a02b7d9ef9f5%3A0xd0b46835376d96c0!2sLaguna%2C%20Philippines!5e0!3m2!1sen!2sus!4v1701895999780!5m2!1sen!2sus`}
-            width="100%"
-            height="400"
-            style={{ border: "0" }}
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
+          {mapData && (
+            <iframe
+              title="Map"
+              src={mapData.mapUrl}
+              width="100%"
+              height="400"
+              style={{ border: "0" }}
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          )}
+          {/* Reported cases list */}
+          <ul>
+            {reportedCases.map((caseData, index) => (
+              <li key={index}>
+                <span>{caseData.date}</span>
+                <span>{caseData.count}</span>
+              </li>
+            ))}
+          </ul>
         </div>
-        </div>
+      </div>
     </div>
   );
 };
