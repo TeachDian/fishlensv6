@@ -33,11 +33,7 @@ function AppContent() {
 
   return (
     <div className="App overflow-x-hidden">
-      {!hideHeaderPaths.includes(location.pathname) && (
-        <>
-          <Navbar />
-        </>
-      )}
+      {!hideHeaderPaths.includes(location.pathname) && <Navbar />}
       <div>
         <Routes>
           <Route path="/" element={<><Hero /><About /><Download /><Blog /><Contact /><Footer /></>} />
@@ -54,6 +50,5 @@ function AppContent() {
     </div>
   );
 }
-
 
 export default App;

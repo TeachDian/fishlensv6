@@ -1,6 +1,7 @@
 import React, { useMemo, useState, useEffect } from "react";
 import { useTable, useFilters, useSortBy, useGlobalFilter } from "react-table";
 import Modal from "react-modal";
+import { v4 as uuidv4 } from "uuid";
 import { data, initializeData } from "./data"; // Import data and initialization function
 import GeoMapping from "./GeoMapping"; // Import GeoMapping component
 
@@ -9,7 +10,7 @@ Modal.setAppElement("#root");
 
 const RefreshButton = ({ onClick }) => (
   <button
-     className="px-8 ml-5 bg-[#00003C] text-white py-2 rounded-md"
+    className="px-8 ml-5 bg-[#00003C] text-white py-2 rounded-md"
     onClick={onClick}
     style={{ padding: "8px", borderRadius: "4px", cursor: "pointer" }}
   >
@@ -37,12 +38,13 @@ const Reports = () => {
 
   const mainColumns = useMemo(
     () => [
-      { Header: "Status", accessor: "reportStatus" },
-      { Header: "Date", accessor: "reportDate" },
       { Header: "Report ID", accessor: "reportIdNumber" },
-      { Header: "User ID", accessor: "userIdNumber" },
-      { Header: "Name", accessor: "firstName" },
       { Header: "Coordinates", accessor: "coordinates" },
+      { Header: "Region", accessor: "region" },
+      { Header: "Province", accessor: "province" },
+      { Header: "City/Town", accessor: "cityTown" },
+      { Header: "User ID", accessor: "userIdNumber" },
+      { Header: "Username", accessor: "username" },
       {
         Header: "Actions",
         accessor: "actions",
@@ -52,7 +54,7 @@ const Reports = () => {
               className="text-blue-500 hover:text-blue-700"
               onClick={() => handleExpandRow(row.original)}
             >
-              {expandedRow === row.original ? "View Less" : "View More"}
+              {expandedRow === row.original ? "Show Less" : "Show More"}
             </button>
           </div>
         ),
@@ -92,18 +94,30 @@ const Reports = () => {
   };
 
   return (
-    <div className="p-6 bg-white rounded shadow-md">
-      <h2 className="text-2xl font-bold  mb-4">Reports</h2>
-      <div className="mb-4">
-        <input
-          value={filterInput}
-          onChange={handleFilterChange}
-          placeholder={"Search all columns"}
-          className="p-2 border border-gray-300 rounded"
-        />
-        <RefreshButton onClick={handleRefresh} />
+    <div className="container mx-auto px-4 py-8">
+      <div className="flex justify-between items-center pb-8">
+        <h2 className="text-xl font-bold">Reports</h2>
+        <nav aria-label="Breadcrumb">
+          <ol className="inline-flex items-center space-x-1">
+            <li className="text-sm font-medium">
+            </li>
+          </ol>
+        </nav>
+        <div className="flex items-center space-x-2">
+          <input
+            type="search"
+            placeholder="Search all columns"
+            className="px-4 py-2 w-64 text-sm text-gray-700"
+          />
+          <button
+            className="px-4 py-2 bg-blue-500 text-white rounded-md"
+            style={{ backgroundColor: "#00003C", color: "#FFFFFF" }}
+          >
+            Refresh
+          </button>
+        </div>
       </div>
-      <div className="">
+      <div className="overflow-x-auto">
         <table
           {...getTableProps()}
           className="min-w-full bg-white border border-gray-200"
@@ -129,33 +143,62 @@ const Reports = () => {
               </tr>
             ))}
           </thead>
-          <tbody {...getTableBodyProps()}>
-            {rows.map((row) => {
-              prepareRow(row);
-              return (
-                <React.Fragment key={row.original.userIdNumber}>
-                  <tr {...row.getRowProps()} className="border-b">
-                    {row.cells.map((cell) => (
-                      <td
-                        {...cell.getCellProps()}
-                        className="px-4 py-2 text-sm text-gray-700 truncate max-w-xs"
-                      >
-                        {cell.render("Cell")}
-                      </td>
-                    ))}
-                  </tr>
-                  {expandedRow === row.original && (
-                    <tr>
-                      <td colSpan={mainColumns.length}>
-                        <div className="p-4 bg-gray-100 border border-gray-300 rounded mt-2">
-                          <GeoMapping coordinates={row.original.coordinates} />
-                        </div>
-                      </td>
-                    </tr>
-                  )}
-                </React.Fragment>
-              );
-            })}
+          <tbody>
+            <tr className="border-b border-gray-200 hover:bg-gray-100">
+              <td className="px-4 py-4" style={{ color: 'red' }}>
+                Pending
+              </td>
+              <td className="px-4 py-4">
+                2024-07-01 14:01
+              </td>
+              <td className="px-4 py-4">
+                00001
+              </td>
+              <td className="px-4 py-4">
+                John Doe
+              </td>
+              <td className="px-4 py-4">
+                Aeromonas Septicemia
+              </td>
+              <td className="px-4 py-4">
+                41°24'12.2"N 2°10/26.5 E
+              </td>
+              <td className="px-4 py-4">
+                <button className="px-2 py-1 bg-blue-500 text-white rounded-md"
+                style={{ backgroundColor: "#00003C", color: "#FFFFFF" }}
+                >
+                  View
+                </button>
+              </td>
+            </tr>
+            <tr className="border-b border-gray-200 hover:bg-gray-100">
+              <td className="px-4 py-4" style={{ color: 'green' }}>
+                Verified
+              </td>
+              <td className="px-4 py-4">
+                2024-07-01 14:01
+              </td>
+              <td className="px-4 py-4">
+                00001
+              </td>
+              <td className="px-4 py-4">
+                John Doe
+              </td>
+              <td className="px-4 py-4">
+                Aeromonas Septicemia
+              </td>
+              <td className="px-4 py-4">
+                41°24'12.2"N 2°10/26.5 E
+              </td>
+              <td className="px-4 py-4">
+                <button className="px-2 py-1 bg-blue-500 text-white rounded-md"
+                style={{ backgroundColor: "#00003C", color: "#FFFFFF" }}
+                >
+                  View
+                </button>
+              </td>
+            </tr>
+            {/* Add more table rows here for other reports */}
           </tbody>
         </table>
       </div>

@@ -6,7 +6,6 @@ import Reports from "./admin/Reports";
 import UserData from "./admin/UserData";
 import GeoMapping from "./admin/GeoMapping";
 import PublishArticles from "./admin/PublishArticles";
-import Regions from "./admin/Regions";
 import Profile from "./admin/Profile"; // Import the Profile component
 import BlankPage from "./admin/BlankPage";
 
@@ -25,10 +24,13 @@ const AdminDashboard = () => {
         return <GeoMapping />;
       case "publishArticles":
         return <PublishArticles />;
+<<<<<<< HEAD
+=======
       case "regions":
         return <Regions />;
       case "blankpage":
         return <BlankPage />;
+>>>>>>> 2529f683daf8bf603b4d609e98a86becf77baaca
       case "profile":
         return <Profile />; // Add the Profile screen
       default:
@@ -37,10 +39,14 @@ const AdminDashboard = () => {
   };
 
   return (
+<<<<<<< HEAD
+    <div id="adminDashboard" className="min-h-screen  overflow-x-scroll bg-[#DDF1FE]">
+=======
     <div
       id="adminDashboard"
       className="min-h-screen  overflow-x-scroll bg-[#F6F9FF]"
     >
+>>>>>>> 2529f683daf8bf603b4d609e98a86becf77baaca
       <Header setCurrentScreen={setCurrentScreen} /> {/* Add the Header */}
       <div className="flex flex-1">
         <AdminSidebar
