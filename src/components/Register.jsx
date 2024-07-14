@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
-import { userAuth, userFirestore } from "./firebase"; // Import your Firebase configuration
 import RegisterRegions from "./registerRegions"; // Updated component for regions selection
 import RegisterReligions from "./registerReligions"; // Updated component for religions selection
 import { registerRegionsData } from "./registerRegionsData";
+
+
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
+import { userAuth, userFirestore } from "./firebase"; // Import your Firebase configuration
+
 
 import Swal from "sweetalert2";
 
@@ -36,7 +39,11 @@ const Register = () => {
     e.preventDefault();
 
     if (password !== retypePassword) {
-      setError("Passwords do not match");
+      Swal.fire({
+        title: "Error!",
+        text: "Passwords do not match",
+        icon: "error",
+      });
       return;
     }
 
@@ -270,15 +277,10 @@ const Register = () => {
           <button
             type="submit"
             className="w-full bg-[#00003C] text-white py-2 rounded-md"
-            onClick={() => {
-              Swal.fire("Registered Successfully!", "Pending Registration", "success");
-            }}
           >
             Register
           </button>
         </form>
-        {message && <p>{message}</p>}
-        {error && <p>{error}</p>}
       </div>
     </section>
   );

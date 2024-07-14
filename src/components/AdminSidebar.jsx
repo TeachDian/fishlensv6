@@ -7,6 +7,7 @@ import {
   LuNewspaper,
 } from "react-icons/lu";
 import { TbReportSearch } from "react-icons/tb";
+import { PiNoteBlankLight } from "react-icons/pi";
 
 
 const AdminSidebar = ({ currentScreen, setCurrentScreen }) => {
@@ -20,7 +21,8 @@ const AdminSidebar = ({ currentScreen, setCurrentScreen }) => {
       screen: "publishArticles",
       icon: <LuNewspaper />,
     },
-    { name: "Regions", screen: "regions", icon: <LuMap /> },
+    // { name: "Regions", screen: "regions", icon: <LuMap /> },
+    { name: "Blank Page", screen: "blankpage", icon: <PiNoteBlankLight /> },
   ];
 
   return (
