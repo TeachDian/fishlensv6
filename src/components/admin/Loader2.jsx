@@ -95,13 +95,13 @@ const Loader2 = () => {
       <div style={loaderStyle}>
         <p>loading</p>
         <div style={wordsStyle}>
+          <span style={wordStyle}>...</span>
           <span style={wordStyle}>fishlens</span>
           <span style={wordStyle}>profile</span>
           <span style={wordStyle}>dashboard</span>
           <span style={wordStyle}>userData</span>
           <span style={wordStyle}>geoMapping</span>
           <span style={wordStyle}>posts</span>
-          <span style={wordStyle}>fishlens</span>
         </div>
       </div>
     </div>
