@@ -5,6 +5,7 @@ import { adminAuth } from "./firebase"; // Use the correct auth instance for adm
 import Swal from "sweetalert2";
 import FishLensLogo from "../assets/img/fishlensT.png"; // Add your logo image to the assets folder
 import Loader from "./admin/Loader"; // Import the Loader component
+import Loader2 from "./admin/Loader2";
 
 const Login = () => {
   const [email, setEmail] = useState("");
