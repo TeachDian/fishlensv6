@@ -4,32 +4,37 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { adminAuth } from "./firebase"; // Use the correct auth instance for admin
 import Swal from "sweetalert2";
 import FishLensLogo from "../assets/img/fishlensT.png"; // Add your logo image to the assets folder
+import Loader from "./admin/Loader"; // Import the Loader component
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false); // Add loading state
   const navigate = useNavigate(); // Initialize useNavigate
 
   const handleLogin = async (event) => {
     event.preventDefault();
+    setLoading(true); // Set loading to true
     try {
       await signInWithEmailAndPassword(adminAuth, email, password);
-      Swal.fire({
-        title: "Success!",
-        text: "Logged in successfully!",
-        icon: "success",
-      });
+
       setTimeout(() => {
         navigate("/adminDashboard"); // Redirect to /adminDashboard after 1000ms
-      }, 1000);
+        setLoading(false); // Set loading to false
+      }, 3000);
     } catch (error) {
       Swal.fire({
         title: "Error!",
         text: error.message,
         icon: "error",
       });
+      setLoading(false); // Set loading to false
     }
   };
+
+  if (loading) {
+    return <Loader />; // Show loader when loading
+  }
 
   return (
     <div className="flex min-h-screen">

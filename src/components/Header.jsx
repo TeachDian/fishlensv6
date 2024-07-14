@@ -8,7 +8,6 @@ import { adminAuth } from "./firebase"; // Ensure the path is correct
 const Header = ({ setCurrentScreen }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const navigate = useNavigate();
-
   const handleLogout = () => {
     const confirmLogout = window.confirm("Are you sure you want to log out?");
     if (confirmLogout) {

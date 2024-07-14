@@ -46,6 +46,7 @@ const Footer = () => {
           <h6 className="font-medium text-[#424242]">Support</h6>
           <ul>
             <li className="py-2 text-sm"><a href="#contact">Contact</a></li>
+            <li className="py-2 text-sm"><a href="/adminDashboard">Admin</a></li>
           </ul>
         </div>
         <div>
